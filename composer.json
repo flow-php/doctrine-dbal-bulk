@@ -1,0 +1,45 @@
+{
+    "name": "flow-php/doctrine-dbal-bulk",
+    "type": "library",
+    "description": "Doctrine DBAL Bulk Operations",
+    "keywords": ["doctrine", "dbal", "bulk", "insert", "upsert"],
+    "prefer-stable": true,
+    "require": {
+        "php": ">=7.4.2",
+        "doctrine/dbal": "^2.12"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.3"
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Flow\\": [
+                "src/Flow"
+            ]
+        }
+    },
+    "scripts": {
+        "build": [
+            "@static:analyze",
+            "@test",
+            "@test:mutation"
+        ],
+        "test": [
+            "phpunit"
+        ],
+        "test:mutation": [
+            "tools/infection -j2"
+        ],
+        "static:analyze": [
+            "tools/psalm --output-format=compact",
+            "tools/phpstan analyze -c phpstan.neon",
+            "tools/php-cs-fixer fix --dry-run"
+        ],
+        "cs:php:fix": "tools/php-cs-fixer fix"
+    }
+}
