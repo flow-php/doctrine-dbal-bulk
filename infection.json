@@ -2,7 +2,7 @@
   "timeout": 1000,
   "source": {
     "directories": [
-      "src\/Aeon"
+      "src\/Flow"
     ],
     "excludes": [
       "/.*\\.phpt/"
@@ -17,34 +17,7 @@
     }
   },
   "mutators": {
-    "@default": true,
-    "PublicVisibility": {
-      "ignore": [
-        "Aeon\\Calendar\\Gregorian\\TimeZone::*"
-      ]
-    },
-    "ArrayItemRemoval": {
-      "ignore": [
-        "Aeon\\Calendar\\Gregorian\\TimeZone::toCountryCode"
-      ]
-    },
-    "IncrementInteger": {
-      "ignore": [
-        "Aeon\\Calendar\\Stopwatch::elapsedTime"
-      ]
-    },
-    "DecrementInteger": {
-      "ignore": [
-        "Aeon\\Calendar\\Stopwatch::elapsedTime"
-      ]
-    },
-    "InstanceOf_": {
-      "ignore": [
-        "Aeon\\Calculator\\PreciseCalculator::initialize",
-        "Aeon\\Calendar\\Gregorian\\LeapSeconds::load",
-        "Aeon\\Calendar\\Gregorian\\DateTime::toDateTimeImmutable"
-      ]
-    }
+    "@default": true
   },
   "testFramework": "phpunit",
   "bootstrap": "./vendor/autoload.php",
