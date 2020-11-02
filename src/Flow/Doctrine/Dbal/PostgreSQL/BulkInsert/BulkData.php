@@ -8,7 +8,7 @@ use Flow\Doctrine\Dbal\Keys;
 
 final class BulkData
 {
-    private array $keys;
+    private Keys $keys;
 
     private array $rows;
 
