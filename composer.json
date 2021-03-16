@@ -23,6 +23,13 @@
             ]
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "Flow\\": [
+                "tests/Flow"
+            ]
+        }
+    },
     "scripts": {
         "build": [
             "@static:analyze",

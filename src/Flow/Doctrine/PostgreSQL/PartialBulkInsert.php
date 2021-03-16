@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Flow\Doctrine\Dbal\PostgreSQL;
+namespace Flow\Doctrine\PostgreSQL;
 
 use Doctrine\DBAL\Connection;
-use Flow\Doctrine\Dbal\PostgreSQL\PartialBulkInsert\PartialBulkData;
+use Flow\Doctrine\PostgreSQL\PartialBulkInsert\PartialBulkData;
 
 final class PartialBulkInsert
 {

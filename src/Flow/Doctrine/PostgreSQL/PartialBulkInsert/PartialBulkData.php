@@ -2,17 +2,19 @@
 
 declare(strict_types=1);
 
-namespace Flow\Doctrine\Dbal\PostgreSQL\BulkInsert;
+namespace Flow\Doctrine\PostgreSQL\PartialBulkInsert;
 
-use Flow\Doctrine\Dbal\Keys;
+use Flow\Doctrine\Keys;
 
-final class BulkData
+final class PartialBulkData
 {
     private Keys $keys;
 
     private array $rows;
 
-    public function __construct(array $data)
+    private Keys $onConflictUpdateKeys;
+
+    public function __construct(Keys $onConflictUpdateKeys, array $data)
     {
         $this->keys = new Keys(...\array_keys(\reset($data)));
         $this->rows = \array_map(
@@ -22,6 +24,7 @@ final class BulkData
             \range(0, \count($data) - 1),
             $data
         );
+        $this->onConflictUpdateKeys = $onConflictUpdateKeys;
     }
 
     public function placeholders() : string
@@ -49,6 +52,6 @@ final class BulkData
 
     public function onConflictUpdate() : string
     {
-        return $this->keys->asSQLSetUsingExcludedTable();
+        return $this->onConflictUpdateKeys->asSQLSetUsingExcludedTable();
     }
 }

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Flow\Doctrine\Dbal;
+namespace Flow\Doctrine;
 
 final class Keys
 {

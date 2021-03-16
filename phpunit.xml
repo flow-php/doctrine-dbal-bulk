@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="https://schema.phpunit.de/9.5/phpunit.xsd"
+         colors="true"
+         bootstrap="vendor/autoload.php"
+         cacheResultFile="var/phpunit/.result.cache"
+>
+    <php>
+        <env name="DATABASE_URL" value="postgresql://postgres:postgres@127.0.0.1:5432/postgres?serverVersion=11%26charset=utf8" />
+    </php>
+
+    <logging/>
+    <testsuites>
+        <testsuite name="integration">
+            <directory suffix="">tests/Flow/Doctrine/Tests/Integration</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
