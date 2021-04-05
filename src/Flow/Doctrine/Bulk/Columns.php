@@ -50,6 +50,24 @@ final class Columns
     }
 
     /**
+     * @psalm-suppress MixedAssignment
+     *
+     * @param mixed[] $data
+     *
+     * @return mixed[]
+     */
+    public function sort(array $data) : array
+    {
+        $sortedData = [];
+
+        foreach ($this->columns as $column) {
+            $sortedData[$column] = $data[$column];
+        }
+
+        return $sortedData;
+    }
+
+    /**
      * @return string[]
      */
     public function all() : array

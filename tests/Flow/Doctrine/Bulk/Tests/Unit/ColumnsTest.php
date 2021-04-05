@@ -52,4 +52,26 @@ final class ColumnsTest extends TestCase
             $columns->concat(',')
         );
     }
+
+    public function test_sorts_given_rows_in_order_of_columns() : void
+    {
+        $columns = new Columns('date', 'title', 'description', 'quantity');
+
+        $sorted = $columns->sort([
+            'quantity' => 101,
+            'title' => 'Title One',
+            'date' => 'today',
+            'description' => 'Description One',
+        ]);
+
+        $this->assertEquals(
+            [
+                'date' => 'today',
+                'title' => 'Title One',
+                'description' => 'Description One',
+                'quantity' => 101,
+            ],
+            $sorted
+        );
+    }
 }

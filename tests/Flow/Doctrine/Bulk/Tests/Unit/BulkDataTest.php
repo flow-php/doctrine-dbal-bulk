@@ -41,7 +41,7 @@ final class BulkDataTest extends TestCase
 
     public function test_prevents_creating_bulk_data_for_different_rows() : void
     {
-        $this->expectExceptionMessage('Each row must be have the same keys in the same order');
+        $this->expectExceptionMessage('Each row must be have the same keys');
 
         new BulkData([
             [
@@ -51,10 +51,11 @@ final class BulkDataTest extends TestCase
                 'quantity' => 101,
             ],
             [
-                'title' => 'Title One',
                 'date' => 'today',
-                'quantity' => 101,
+                'title' => 'Title One',
                 'description' => 'Description One',
+                'quantity' => 101,
+                'status' => 'completed',
             ],
         ]);
     }
@@ -92,10 +93,10 @@ final class BulkDataTest extends TestCase
                 'quantity' => 101,
             ],
             [
-                'date' => 'today',
                 'title' => 'Title Two',
-                'description' => 'Description Two',
+                'date' => 'today',
                 'quantity' => 102,
+                'description' => 'Description Two',
             ],
         ]);
 
@@ -124,10 +125,10 @@ final class BulkDataTest extends TestCase
                 'quantity' => 101,
             ],
             [
-                'date' => 'today',
                 'title' => 'Title Two',
-                'description' => 'Description Two',
+                'date' => 'today',
                 'quantity' => 102,
+                'description' => 'Description Two',
             ],
         ]);
 

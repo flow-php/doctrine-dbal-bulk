@@ -33,22 +33,26 @@ final class BulkData
         }
 
         $keys = \array_keys($firstRow);
+        \sort($keys);
 
         foreach ($rows as $row) {
             if (!\is_array($row)) {
                 throw new RuntimeException('Each row must be an array');
             }
 
-            if ($keys !== \array_keys($row)) {
-                throw new RuntimeException('Each row must be have the same keys in the same order');
+            $rowKeys = \array_keys($row);
+            \sort($rowKeys);
+
+            if ($keys !== $rowKeys) {
+                throw new RuntimeException('Each row must be have the same keys');
             }
         }
 
-        $this->columns = new Columns(...$keys);
+        $this->columns = new Columns(...\array_keys($firstRow));
         $this->rows = \array_map( /** @phpstan-ignore-line */
             fn (int $index, array $row) => \array_combine(
                 $this->columns->suffix("_{$index}")->all(),
-                $row,
+                $this->columns->sort($row),
             ),
             \range(0, \count($rows) - 1),
             $rows
