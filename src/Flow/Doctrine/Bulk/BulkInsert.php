@@ -26,28 +26,28 @@ final class BulkInsert
 
     public function insert(string $table, BulkData $bulkData) : void
     {
-        $this->connection->prepare(
+        $this->connection->executeQuery(
             $this->queryFactory->insert($this->connection->getDatabasePlatform(), $table, $bulkData),
-        )->execute(
-            $bulkData->toSqlParameters()
+            $bulkData->toSqlParameters(),
+            $bulkData->toSqlParametersTypes()
         );
     }
 
     public function insertOrSkipOnConflict(string $table, BulkData $bulkData) : void
     {
-        $this->connection->prepare(
+        $this->connection->executeQuery(
             $this->queryFactory->insertOrSkipOnConflict($this->connection->getDatabasePlatform(), $table, $bulkData),
-        )->execute(
-            $bulkData->toSqlParameters()
+            $bulkData->toSqlParameters(),
+            $bulkData->toSqlParametersTypes()
         );
     }
 
     public function insertOrUpdateOnConstraintConflict(string $table, string $constraint, BulkData $bulkData) : void
     {
-        $this->connection->prepare(
+        $this->connection->executeQuery(
             $this->queryFactory->insertOrUpdateOnConstraintConflict($this->connection->getDatabasePlatform(), $table, $constraint, $bulkData),
-        )->execute(
-            $bulkData->toSqlParameters()
+            $bulkData->toSqlParameters(),
+            $bulkData->toSqlParametersTypes()
         );
     }
 }

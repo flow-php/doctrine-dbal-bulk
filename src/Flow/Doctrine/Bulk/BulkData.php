@@ -45,7 +45,7 @@ final class BulkData
         }
 
         $this->columns = new Columns(...$keys);
-        $this->rows = \array_map( /** @phpstan-ignore-line */
+        $this->rows = \array_map(
             fn (int $index, array $row) => \array_combine(
                 $this->columns->suffix("_{$index}")->all(),
                 $row,
@@ -61,6 +61,17 @@ final class BulkData
     public function toSqlParameters() : array
     {
         return \array_merge(...$this->rows);
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    public function toSqlParametersTypes() : array
+    {
+        return \array_map(
+            fn ($value) : string => \gettype($value),
+            \array_merge(...$this->rows)
+        );
     }
 
     /**
