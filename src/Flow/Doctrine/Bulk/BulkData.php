@@ -64,17 +64,6 @@ final class BulkData
     }
 
     /**
-     * @return array<string, string>
-     */
-    public function toSqlParametersTypes() : array
-    {
-        return \array_map(
-            fn ($value) : string => \gettype($value),
-            \array_merge(...$this->rows)
-        );
-    }
-
-    /**
      * @return string It returns a string for SQL bulk insert query, eg:
      *                (:id_0, :name_0, :title_0), (:id_1, :name_1, :title_1), (:id_2, :name_2, :title_2)
      */

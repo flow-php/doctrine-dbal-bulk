@@ -114,38 +114,6 @@ final class BulkDataTest extends TestCase
         );
     }
 
-    public function test_returns_types_for_all_sql_parameters_as_one_dimensional_array_with_placeholders_as_keys() : void
-    {
-        $bulkData = new BulkData([
-            [
-                'date' => '2021-06-11',
-                'title' => 'Title One',
-                'active' => true,
-                'quantity' => 101,
-            ],
-            [
-                'date' => '2021-06-11',
-                'title' => 'Title Two',
-                'active' => false,
-                'quantity' => 101,
-            ],
-        ]);
-
-        $this->assertEquals(
-            [
-                'date_0' => 'string',
-                'title_0' => 'string',
-                'active_0' => 'boolean',
-                'quantity_0' => 'integer',
-                'date_1' => 'string',
-                'title_1' => 'string',
-                'active_1' => 'boolean',
-                'quantity_1' => 'integer',
-            ],
-            $bulkData->toSqlParametersTypes()
-        );
-    }
-
     public function test_transforms_data_to_sql_values_placeholders() : void
     {
         $bulkData = new BulkData([

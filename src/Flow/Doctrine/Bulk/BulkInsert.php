@@ -29,7 +29,10 @@ final class BulkInsert
         $this->connection->executeQuery(
             $this->queryFactory->insert($this->connection->getDatabasePlatform(), $table, $bulkData),
             $bulkData->toSqlParameters(),
-            $bulkData->toSqlParametersTypes()
+            \array_map(
+                fn ($value) : string => \gettype($value),
+                \array_filter($bulkData->toSqlParameters(), fn ($value) : bool => \is_bool($value))
+            )
         );
     }
 
@@ -38,7 +41,10 @@ final class BulkInsert
         $this->connection->executeQuery(
             $this->queryFactory->insertOrSkipOnConflict($this->connection->getDatabasePlatform(), $table, $bulkData),
             $bulkData->toSqlParameters(),
-            $bulkData->toSqlParametersTypes()
+            \array_map(
+                fn ($value) : string => \gettype($value),
+                \array_filter($bulkData->toSqlParameters(), fn ($value) : bool => \is_bool($value))
+            )
         );
     }
 
@@ -47,7 +53,10 @@ final class BulkInsert
         $this->connection->executeQuery(
             $this->queryFactory->insertOrUpdateOnConstraintConflict($this->connection->getDatabasePlatform(), $table, $constraint, $bulkData),
             $bulkData->toSqlParameters(),
-            $bulkData->toSqlParametersTypes()
+            \array_map(
+                fn ($value) : string => \gettype($value),
+                \array_filter($bulkData->toSqlParameters(), fn ($value) : bool => \is_bool($value))
+            )
         );
     }
 }
