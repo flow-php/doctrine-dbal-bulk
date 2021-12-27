@@ -12,6 +12,8 @@ use Flow\Doctrine\Bulk\QueryFactory;
 class DbalQueryFactory implements QueryFactory
 {
     /**
+     * @psalm-suppress DeprecatedMethod
+     *
      * @param AbstractPlatform $platform
      * @param string $table
      * @param BulkData $bulkData
@@ -38,6 +40,8 @@ class DbalQueryFactory implements QueryFactory
     }
 
     /**
+     * @psalm-suppress DeprecatedMethod
+     *
      * @param AbstractPlatform $platform
      * @param string $table
      * @param BulkData $bulkData
@@ -64,6 +68,8 @@ class DbalQueryFactory implements QueryFactory
     }
 
     /**
+     * @psalm-suppress DeprecatedMethod
+     *
      * @param AbstractPlatform $platform
      * @param string $table
      * @param string $constraint
@@ -103,6 +109,8 @@ class DbalQueryFactory implements QueryFactory
     }
 
     /**
+     * @psalm-suppress DeprecatedMethod
+     *
      * @param AbstractPlatform $platform
      * @param string $table
      * @param array<string> $conflictColumns
