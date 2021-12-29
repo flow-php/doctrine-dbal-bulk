@@ -4,6 +4,7 @@ namespace Flow\Doctrine\Bulk\Tests\Unit;
 
 use Doctrine\DBAL\Platforms\PostgreSQL94Platform;
 use Doctrine\DBAL\Platforms\PostgreSQLPlatform;
+use Doctrine\DBAL\Platforms\SqlitePlatform;
 use Flow\Doctrine\Bulk\QueryFactory\DbalPlatform;
 use PHPUnit\Framework\TestCase;
 
@@ -29,5 +30,12 @@ final class DbalPlatformTest extends TestCase
         $platform = new DbalPlatform(new PostgreSQL94Platform());
 
         $this->assertTrue($platform->isPostgreSQL());
+    }
+
+    public function test_is_no_postgres_sql() : void
+    {
+        $platform = new DbalPlatform(new SqlitePlatform());
+
+        $this->assertFalse($platform->isPostgreSQL());
     }
 }
