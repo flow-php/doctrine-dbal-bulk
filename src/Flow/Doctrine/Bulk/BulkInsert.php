@@ -9,25 +9,22 @@ use Flow\Doctrine\Bulk\QueryFactory\DbalQueryFactory;
 
 final class BulkInsert
 {
-    private Connection $connection;
-
     private QueryFactory $queryFactory;
 
-    public function __construct(Connection $connection, QueryFactory $queryFactory)
+    public function __construct(QueryFactory $queryFactory)
     {
-        $this->connection = $connection;
         $this->queryFactory = $queryFactory;
     }
 
-    public static function create(Connection $connection) : self
+    public static function create() : self
     {
-        return new self($connection, new DbalQueryFactory());
+        return new self(new DbalQueryFactory());
     }
 
-    public function insert(string $table, BulkData $bulkData) : void
+    public function insert(Connection $connection, string $table, BulkData $bulkData) : void
     {
-        $this->connection->executeQuery(
-            $this->queryFactory->insert($this->connection->getDatabasePlatform(), $table, $bulkData),
+        $connection->executeQuery(
+            $this->queryFactory->insert($connection->getDatabasePlatform(), $table, $bulkData),
             $bulkData->toSqlParameters(),
             \array_map(
                 fn ($value) : string => \gettype($value),
@@ -36,10 +33,10 @@ final class BulkInsert
         );
     }
 
-    public function insertOrSkipOnConflict(string $table, BulkData $bulkData) : void
+    public function insertOrSkipOnConflict(Connection $connection, string $table, BulkData $bulkData) : void
     {
-        $this->connection->executeQuery(
-            $this->queryFactory->insertOrSkipOnConflict($this->connection->getDatabasePlatform(), $table, $bulkData),
+        $connection->executeQuery(
+            $this->queryFactory->insertOrSkipOnConflict($connection->getDatabasePlatform(), $table, $bulkData),
             $bulkData->toSqlParameters(),
             \array_map(
                 fn ($value) : string => \gettype($value),
@@ -48,10 +45,10 @@ final class BulkInsert
         );
     }
 
-    public function insertOrUpdateOnConstraintConflict(string $table, string $constraint, BulkData $bulkData) : void
+    public function insertOrUpdateOnConstraintConflict(Connection $connection, string $table, string $constraint, BulkData $bulkData) : void
     {
-        $this->connection->executeQuery(
-            $this->queryFactory->insertOrUpdateOnConstraintConflict($this->connection->getDatabasePlatform(), $table, $constraint, $bulkData),
+        $connection->executeQuery(
+            $this->queryFactory->insertOrUpdateOnConstraintConflict($connection->getDatabasePlatform(), $table, $constraint, $bulkData),
             $bulkData->toSqlParameters(),
             \array_map(
                 fn ($value) : string => \gettype($value),
@@ -61,6 +58,7 @@ final class BulkInsert
     }
 
     /**
+     * @param Connection $connection
      * @param string $table
      * @param array<string> $conflictColumns
      * @param BulkData $bulkData
@@ -68,10 +66,10 @@ final class BulkInsert
      *
      * @throws \Doctrine\DBAL\Exception
      */
-    public function insertOrUpdateOnConflict(string $table, array $conflictColumns, BulkData $bulkData, array $updateColumns = []) : void
+    public function insertOrUpdateOnConflict(Connection $connection, string $table, array $conflictColumns, BulkData $bulkData, array $updateColumns = []) : void
     {
-        $this->connection->executeQuery(
-            $this->queryFactory->insertOrUpdateOnConflict($this->connection->getDatabasePlatform(), $table, $conflictColumns, $bulkData, $updateColumns),
+        $connection->executeQuery(
+            $this->queryFactory->insertOrUpdateOnConflict($connection->getDatabasePlatform(), $table, $conflictColumns, $bulkData, $updateColumns),
             $bulkData->toSqlParameters(),
             \array_map(
                 fn ($value) : string => \gettype($value),
