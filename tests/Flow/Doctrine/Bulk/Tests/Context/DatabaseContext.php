@@ -30,7 +30,7 @@ final class DatabaseContext
     {
         $schemaManager = $this
             ->connection
-            ->createSchemaManager();
+            ->getSchemaManager();
 
         if ($schemaManager->tablesExist($table->getName())) {
             $schemaManager->dropTable($table->getName());
@@ -71,8 +71,8 @@ final class DatabaseContext
 
     public function dropAllTables() : void
     {
-        foreach ($this->connection->createSchemaManager()->listTables() as $table) {
-            $this->connection->createSchemaManager()->dropTable($table->getName());
+        foreach ($this->connection->getSchemaManager()->listTables() as $table) {
+            $this->connection->getSchemaManager()->dropTable($table->getName());
         }
     }
 }
