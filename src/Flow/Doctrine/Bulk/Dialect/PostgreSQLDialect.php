@@ -12,7 +12,7 @@ final class PostgreSQLDialect implements Dialect
      * @param string $table
      * @param BulkData $bulkData
      * @param array{
-     *  do_nothing?: boolean,
+     *  skip_conflicts?: boolean,
      *  constraint?: string,
      *  conflict_columns?: array<string>,
      *  update_columns?: array<string>
@@ -48,7 +48,7 @@ final class PostgreSQLDialect implements Dialect
             );
         }
 
-        if (\array_key_exists('do_nothing', $insertOptions) && $insertOptions['do_nothing'] === true) {
+        if (\array_key_exists('skip_conflicts', $insertOptions) && $insertOptions['skip_conflicts'] === true) {
             return \sprintf(
                 'INSERT INTO %s (%s) VALUES %s ON CONFLICT DO NOTHING',
                 $table,

@@ -26,7 +26,7 @@ final class BulkInsert
      * @param string $table
      * @param BulkData $bulkData
      * @param array{
-     *  do_nothing?: boolean,
+     *  skip_conflicts?: boolean,
      *  constraint?: string,
      *  conflict_columns?: array<string>,
      *  update_columns?: array<string>
@@ -55,7 +55,7 @@ final class BulkInsert
     public function insertOrSkipOnConflict(Connection $connection, string $table, BulkData $bulkData) : void
     {
         $this->insert($connection, $table, $bulkData, [
-            'do_nothing' => true,
+            'skip_conflicts' => true,
         ]);
     }
 

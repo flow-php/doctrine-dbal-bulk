@@ -16,7 +16,7 @@ class DbalQueryFactory implements QueryFactory
      * @param string $table
      * @param BulkData $bulkData
      * @param array{
-     *  do_nothing?: boolean,
+     *  skip_conflicts?: boolean,
      *  constraint?: string,
      *  conflict_columns?: array<string>,
      *  update_columns?: array<string>
