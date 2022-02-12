@@ -20,10 +20,10 @@ final class PostgreSqlBulkInsertTest extends IntegrationTestCase
             (new Table(
                 $table = 'flow_doctrine_bulk_test',
                 [
-                    new Column("id", Type::getType(Types::INTEGER), ['notnull' => true]),
-                    new Column("name", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("description", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("active", Type::getType(Types::BOOLEAN), ['notnull' => true]),
+                    new Column('id', Type::getType(Types::INTEGER), ['notnull' => true]),
+                    new Column('name', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('description', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('active', Type::getType(Types::BOOLEAN), ['notnull' => true]),
                 ],
             ))
             ->setPrimaryKey(['id'])
@@ -49,10 +49,10 @@ final class PostgreSqlBulkInsertTest extends IntegrationTestCase
             (new Table(
                 $table = 'flow_doctrine_bulk_test',
                 [
-                    new Column("id", Type::getType(Types::INTEGER), ['notnull' => true]),
-                    new Column("name", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("description", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("active", Type::getType(Types::BOOLEAN), ['notnull' => true]),
+                    new Column('id', Type::getType(Types::INTEGER), ['notnull' => true]),
+                    new Column('name', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('description', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('active', Type::getType(Types::BOOLEAN), ['notnull' => true]),
                 ],
             ))
             ->setPrimaryKey(['id'])
@@ -97,10 +97,10 @@ final class PostgreSqlBulkInsertTest extends IntegrationTestCase
             (new Table(
                 $table = 'flow_doctrine_bulk_test',
                 [
-                    new Column("id", Type::getType(Types::INTEGER), ['notnull' => true]),
-                    new Column("name", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("description", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("active", Type::getType(Types::BOOLEAN), ['notnull' => true]),
+                    new Column('id', Type::getType(Types::INTEGER), ['notnull' => true]),
+                    new Column('name', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('description', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('active', Type::getType(Types::BOOLEAN), ['notnull' => true]),
                 ],
             ))
             ->setPrimaryKey(['id'])
@@ -145,10 +145,10 @@ final class PostgreSqlBulkInsertTest extends IntegrationTestCase
             (new Table(
                 $table = 'flow_doctrine_bulk_test',
                 [
-                    new Column("id", Type::getType(Types::INTEGER), ['notnull' => true]),
-                    new Column("name", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("description", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("active", Type::getType(Types::BOOLEAN), ['notnull' => true]),
+                    new Column('id', Type::getType(Types::INTEGER), ['notnull' => true]),
+                    new Column('name', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('description', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('active', Type::getType(Types::BOOLEAN), ['notnull' => true]),
                 ],
             ))
             ->setPrimaryKey(['id'])
@@ -193,10 +193,10 @@ final class PostgreSqlBulkInsertTest extends IntegrationTestCase
             (new Table(
                 $table = 'flow_doctrine_bulk_test',
                 [
-                    new Column("id", Type::getType(Types::INTEGER), ['notnull' => true]),
-                    new Column("name", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("description", Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
-                    new Column("active", Type::getType(Types::BOOLEAN), ['notnull' => true]),
+                    new Column('id', Type::getType(Types::INTEGER), ['notnull' => true]),
+                    new Column('name', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('description', Type::getType(Types::STRING), ['notnull' => true, 'length' => 255]),
+                    new Column('active', Type::getType(Types::BOOLEAN), ['notnull' => true]),
                 ],
             ))
             ->setPrimaryKey(['id'])

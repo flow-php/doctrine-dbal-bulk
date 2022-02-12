@@ -60,12 +60,13 @@ final class Columns
     /**
      * @template ReturnType
      * @psalm-param callable(string) : ReturnType $callable
-     * @psalm-return ReturnType[]
+     * @psalm-return array<ReturnType>
      */
     public function map(callable $callable) : array
     {
-        /** @var array<string> $columns */
+        /** @var array<ReturnType> $columns */
         $columns = [];
+
         foreach ($this->columns as $column) {
             $columns[] = $callable($column);
         }

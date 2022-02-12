@@ -45,9 +45,9 @@ final class DatabaseContext
             $this
                 ->connection
                 ->createQueryBuilder()
-                ->select("*")
+                ->select('*')
                 ->from($tableName)
-                ->orderBy("id")
+                ->orderBy('id')
                 ->getSQL()
         );
     }
@@ -58,7 +58,7 @@ final class DatabaseContext
             $this
                 ->connection
                 ->createQueryBuilder()
-                ->select("COUNT(*)")
+                ->select('COUNT(*)')
                 ->from($tableName)
                 ->getSQL()
         );
