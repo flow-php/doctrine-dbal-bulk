@@ -17,7 +17,7 @@ final class PostgreSqlBulkInsertTest extends IntegrationTestCase
 {
     public function test_inserts_deprecated_json_array_row() : void
     {
-        if (!defined('Doctrine\DBAL\Types\Types::JSON_ARRAY')) {
+        if (!\defined('Doctrine\DBAL\Types\Types::JSON_ARRAY')) {
             $this->markTestSkipped('DBAL version >= 3.0');
         }
 
