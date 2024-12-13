@@ -119,7 +119,8 @@ final class BulkData
             foreach ($row as $column => $entry) {
                 $rows[$index][$column . '_' . $index] = match (\gettype($entry)) {
                     'string' => match (Type::getTypeRegistry()->lookupName($table->dbalColumn($column)->getType())) {
-                        Types::JSON, 'json_array' => \json_decode($entry, true, 512, JSON_THROW_ON_ERROR),
+                        Types::JSON,
+                        'json_array' => \json_decode($entry, true, 512, JSON_THROW_ON_ERROR),
                         Types::DATETIME_IMMUTABLE,
                         Types::DATETIMETZ_IMMUTABLE,
                         Types::DATE_IMMUTABLE,
@@ -127,6 +128,21 @@ final class BulkData
                         Types::DATE_MUTABLE,
                         Types::DATETIME_MUTABLE,
                         Types::DATETIMETZ_MUTABLE => new \DateTime($entry),
+                        default => $entry,
+                    },
+                    'array' => match (Type::getTypeRegistry()->lookupName($table->dbalColumn($column)->getType())) {
+                        Types::TEXT => \json_encode($entry, JSON_THROW_ON_ERROR),
+                        default => $entry,
+                    },
+                    'object' => match ($entry::class) {
+                        \DateTimeImmutable::class => match (Type::getTypeRegistry()->lookupName($table->dbalColumn($column)->getType())) {
+                            Types::DATETIME_MUTABLE => \DateTime::createFromImmutable($entry),
+                            default => $entry,
+                        },
+                        \DateTime::class => match (Type::getTypeRegistry()->lookupName($table->dbalColumn($column)->getType())) {
+                            Types::DATETIME_IMMUTABLE => \DateTimeImmutable::createFromMutable($entry),
+                            default => $entry,
+                        },
                         default => $entry,
                     },
                     default => $entry,
