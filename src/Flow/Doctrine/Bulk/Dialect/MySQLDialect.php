@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Flow\Doctrine\Bulk\Dialect;
 
 use Doctrine\DBAL\Platforms\AbstractPlatform;
-use Flow\Doctrine\Bulk\Exception\RuntimeException;
 use Flow\Doctrine\Bulk\{BulkData, Columns, InsertOptions, TableDefinition, UpdateOptions};
+use Flow\Doctrine\Bulk\Exception\RuntimeException;
 
 final readonly class MySQLDialect implements Dialect
 {

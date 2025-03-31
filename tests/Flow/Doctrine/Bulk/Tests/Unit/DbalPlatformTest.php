@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Flow\Doctrine\Bulk\Tests\Unit;
 
-use Doctrine\DBAL\Platforms\SQLitePlatform;
 use Doctrine\DBAL\Platforms\{MariaDBPlatform, MySQL80Platform, OraclePlatform, PostgreSQLPlatform};
+use Doctrine\DBAL\Platforms\SQLitePlatform;
 use Flow\Doctrine\Bulk\DbalPlatform;
 use Flow\Doctrine\Bulk\Dialect\{MySQLDialect, PostgreSQLDialect, SqliteDialect};
 use Flow\Doctrine\Bulk\Exception\RuntimeException;

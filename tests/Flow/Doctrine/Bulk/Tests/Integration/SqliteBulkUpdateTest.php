@@ -6,8 +6,8 @@ namespace Flow\Doctrine\Bulk\Tests\Integration;
 
 use Doctrine\DBAL\Schema\{Column, Table};
 use Doctrine\DBAL\Types\{Type, Types};
-use Flow\Doctrine\Bulk\Tests\SqliteIntegrationTestCase;
 use Flow\Doctrine\Bulk\{Bulk, BulkData};
+use Flow\Doctrine\Bulk\Tests\SqliteIntegrationTestCase;
 
 final class SqliteBulkUpdateTest extends SqliteIntegrationTestCase
 {

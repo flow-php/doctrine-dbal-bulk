@@ -7,8 +7,8 @@ namespace Flow\Doctrine\Bulk\Tests\Integration;
 use function Flow\ETL\DSL\generate_random_string;
 use Doctrine\DBAL\Schema\{Column, Table};
 use Doctrine\DBAL\Types\{Type, Types};
-use Flow\Doctrine\Bulk\Tests\SqliteIntegrationTestCase;
 use Flow\Doctrine\Bulk\{Bulk, BulkData, Dialect\SqliteInsertOptions};
+use Flow\Doctrine\Bulk\Tests\SqliteIntegrationTestCase;
 
 final class SqliteBulkInsertTest extends SqliteIntegrationTestCase
 {

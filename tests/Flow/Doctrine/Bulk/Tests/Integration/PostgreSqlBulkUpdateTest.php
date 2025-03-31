@@ -6,9 +6,9 @@ namespace Flow\Doctrine\Bulk\Tests\Integration;
 
 use Doctrine\DBAL\Schema\{Column, Table};
 use Doctrine\DBAL\Types\{Type, Types};
+use Flow\Doctrine\Bulk\{Bulk, BulkData, Dialect\PostgreSQLUpdateOptions};
 use Flow\Doctrine\Bulk\Exception\RuntimeException;
 use Flow\Doctrine\Bulk\Tests\PostgreSqlIntegrationTestCase;
-use Flow\Doctrine\Bulk\{Bulk, BulkData, Dialect\PostgreSQLUpdateOptions};
 
 final class PostgreSqlBulkUpdateTest extends PostgreSqlIntegrationTestCase
 {

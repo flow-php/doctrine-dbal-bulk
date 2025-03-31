@@ -7,8 +7,8 @@ namespace Flow\Doctrine\Bulk\Tests\Integration;
 use function Flow\ETL\DSL\generate_random_string;
 use Doctrine\DBAL\Schema\{Column, Table};
 use Doctrine\DBAL\Types\{Type, Types};
-use Flow\Doctrine\Bulk\Tests\MysqlIntegrationTestCase;
 use Flow\Doctrine\Bulk\{Bulk, BulkData, Dialect\MySQLInsertOptions};
+use Flow\Doctrine\Bulk\Tests\MysqlIntegrationTestCase;
 
 final class MySqlBulkInsertTest extends MysqlIntegrationTestCase
 {
